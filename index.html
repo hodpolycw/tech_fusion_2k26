@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: black;
+            overflow: hidden;
+        }
+
+        /* Image */
+        .full-img {
+            width: 100%;
+            height: 100vh;
+            object-fit: contain;
+            background: black;
+        }
+
+        /* Container to position button */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Register Button */
+        .register-btn {
+            position: absolute;
+            left: 50%;
+            top: 68%;
+            /* Adjust if needed */
+            transform: translate(-50%, -50%);
+            padding: 15px 35px;
+            background: #a855f7;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #7e22ce;
+            box-shadow: 0 0 20px #a855f7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="bg.png" class="full-img">
+
+        <!-- Register Button -->
+        <a href="index.html" class="register-btn">
+            Register
+        </a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-Fusion 2k26</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            transition: 0.4s;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #6a5af9, #ff4fa3);
+            color: white;
+        }
+
+        /* TITLE */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 28px;
+        }
+
+        /* CARD CONTAINER */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* CARD */
+        .card {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .register {
+            background: #6a5af9;
+            color: white;
+        }
+
+        .register:hover {
+            background: #4b3ef0;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* MODAL */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            width: 500px;
+            padding: 25px;
+            border-radius: 12px;
+            transform: scale(0.7);
+            transition: 0.4s;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Top Section */
+        .footer-top {
+            background: #e6e6e6;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        /* Main Heading */
+        .footer-top>p {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Coordinator Section */
+        .coordinator {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .coordinator h4 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 2px solid #6a5af9;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .coordinator p {
+            margin: 5px 0;
+            font-size: 15px;
+            color: #444;
+        }
+
+        /* Bottom Black Strip */
+        .footer-bottom {
+            height: 30px;
+            background: #000;
+        }
+
+        /* Hover Effect */
+        .coordinator p:hover {
+            color: #6a5af9;
+            transition: 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .footer-top {
+                padding: 25px 15px;
+            }
+
+            .coordinator h4 {
+                font-size: 16px;
+            }
+
+            .coordinator p {
+                font-size: 14px;
+            }
+        }
+
+        @media(max-width:500px) {
+
+            .card,
+            .modal-content {
+                width: 90%;
+            }
+        }
+
+        body {
+            margin: 0;
+            background: black;
+            color: #00ff99;
+            font-family: monospace;
+            overflow: hidden;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        #bootScreen {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #terminal {
+            font-size: 18px;
+            white-space: pre-line;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>🔥 TECH-FUSION 2k26</h2>
+    </div>
+
+    <div class="section-title">
+        College Event Sections
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <h3>📄 Paper Presentation</h3>
+            <p>Present your innovative ideas and research confidently.</p>
+            <div class="buttons">
+                <button class="btn view" onclick="openModal('paper')">View</button>
+                <a href="https://forms.gle/paperForm123" target="_blank" class="btn register">Register</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Web-Crafting (UI/UX)</h3>
+            <p>Turn ideas into interactive and visually engaging web designs.</p>
+            <div class="buttons">
+                <button class="btn view" onclick="openModal('web')">View</button>
+                <a href="https://forms.gle/webForm123" target="_blank" class="btn register">Register</a>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h3>📐 Auto-CAD Designing</h3>
+            <p>Create precise and innovative designs using advanced modeling tools.</p>
+            <div class="buttons">
+                <button class="btn view" onclick="openModal('cad')">View</button>
+                <a href="https://forms.gle/cadForm123" target="_blank" class="btn register">Register</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎮 E-Sport</h3>
+            <p>Enter the arena, showcase skills and claim victory.</p>
+            <div class="buttons">
+                <button class="btn view" onclick="openModal('esport')">View</button>
+                <a href="https://forms.gle/esportForm123" target="_blank" class="btn register">Register</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">✖</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <br>
+            <h4>Rules:</h4>
+            <ul id="modalRules"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <p>© 2k26 Tech-Fusion Committee</p>
+
+            <div class="coordinator">
+                <h4>Event Coordinator</h4>
+                <p>Name: Prof. Ajinkya Gujarkar</p>
+                <p>📞 Contact: +91 8169049683</p>
+                <p>Name: Prof. Swaroop Bhoyar</p>
+                <p>📞 Contact: +91 9284858958</p>
+                <h4>Student Coordinator</h4>
+                <p>Name: Himanshu Sakhare</p>
+                <p>📞 Contact: +91 7620467699</p>
+                <p>Name: Omkar Pandhare</p>
+                <p>📞 Contact: +91 9405686525</p>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom"></div>
+    </footer>
+
+    <script>
+
+        const modal = document.getElementById("modal");
+        const title = document.getElementById("modalTitle");
+        const desc = document.getElementById("modalDesc");
+        const rules = document.getElementById("modalRules");
+
+        function openModal(eventType) {
+
+            modal.classList.add("active");
+
+            if (eventType === "paper") {
+                title.innerText = "Paper Presentation";
+                desc.innerText = "Present your research ideas in front of expert judges.";
+                rules.innerHTML = `
+        <li>Team of max 2 members</li>
+        <li>Time limit: 8 minutes</li>
+        <li>PPT is mandatory</li>
+        <li>Original content only</li>
+    `;
+            }
+
+            if (eventType === "project") {
+                title.innerText = "Project Exhibition";
+                desc.innerText = "Showcase your innovative projects and working models.";
+                rules.innerHTML = `
+        <li>Team of max 3 members</li>
+        <li>Live project demonstration required</li>
+        <li>Explain working clearly</li>
+        <li>Judging based on innovation & practicality</li>
+    `;
+            }
+
+            if (eventType === "web") {
+                title.innerText = "Web-Crafting (UI/UX)";
+                desc.innerText = "Design creative, responsive and user-friendly web interfaces.";
+                rules.innerHTML = `
+        <li>Individual or team of 2</li>
+        <li>Time limit: 3 hours</li>
+        <li>Responsive design required</li>
+        <li>No pre-built templates allowed</li>
+    `;
+            }
+
+            if (eventType === "cad") {
+                title.innerText = "Auto-CAD Designing";
+                desc.innerText = "Create precise 2D/3D models using CAD software.";
+                rules.innerHTML = `
+        <li>Individual participation</li>
+        <li>Time limit: 2 hours</li>
+        <li>Design must follow given theme</li>
+        <li>Evaluation based on accuracy & creativity</li>
+    `;
+            }
+
+            if (eventType === "esport") {
+                title.innerText = "E-Sport Tournament";
+                desc.innerText = "Compete in intense gaming battles and win exciting prizes.";
+                rules.innerHTML = `
+        <li>Team of 4 players</li>
+        <li>Knockout format</li>
+        <li>Fair play is mandatory</li>
+        <li>Game version will be provided by organizers</li>
+    `;
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove("active");
+        }
+
+        /* Close when clicking outside */
+        window.onclick = function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        }
+
+    </script>
+
+    <canvas id="matrix"></canvas>
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "アァイィウヴエカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァイィウヴエカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00ff99";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>
