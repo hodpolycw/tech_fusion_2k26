@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Gaming - Tech Fusion 2K26</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* PARTICLE BACKGROUND */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* MAIN CONTAINER */
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h1{
+    color:#00c3ff;
+    margin-bottom:20px;
+}
+
+.poster{
+    width:300px;
+    border-radius:12px;
+    margin:20px auto;
+    box-shadow:0 0 25px rgba(0,195,255,0.5);
+}
+
+.details{
+    margin-top:20px;
+    line-height:1.8;
+    font-size:15px;
+}
+
+.details strong{
+    color:#00c3ff;
+}
+
+/* SECTION */
+.section{
+    margin-top:50px;
+}
+
+.section h2{
+    color:#00c3ff;
+    margin-bottom:15px;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 30px;
+    background:#00c3ff;
+    color:black;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #00c3ff;
+}
+
+/* HIGHLIGHTS */
+.highlight-box{
+    display:inline-block;
+    margin:10px;
+    padding:15px 25px;
+    background:#1e293b;
+    border-radius:8px;
+    border:1px solid #00c3ff;
+}
+
+/* CONTACT */
+.contact{
+    margin-top:40px;
+}
+
+.contact p{
+    margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+<h1>E-Gaming</h1>
+
+<img src="egaming-poster.jpg" class="poster">
+
+<p>Compete in BGMI, and Free Fire</p>
+
+<div class="details">
+<p><strong>📅 Date:</strong> 07 March, 2026</p>
+<p><strong>⏰ Timing:</strong> 10:00 AM – 4:00 PM</p>
+<p><strong>📍 Location:</strong> TGPCET, Nagpur</p>
+<p><strong>🎮 Mode:</strong> Offline</p>
+<p><strong>💰 Group Entry Fees:</strong> ₹200 (Max 3–4 Members)</p>
+<p><strong>💰 Solo Entry Fees:</strong> ₹100</p>
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScRNfPo0lI2MS6nmBDW-mEeSlq4EezwTcqtKjvwloAt1dARlA/viewform?usp=header" target="_blank" class="btn">Register Now</a>
+
+<div class="section">
+<h2>About the Event</h2>
+<p>
+Step into the ultimate battleground of e-sports and test your gaming skills in an intense and competitive environment.
+This event brings together passionate gamers to compete in popular titles like Valorant, BGMI, and Free Fire.
+The tournament will be conducted in multiple stages including qualifiers and finals.
+Winners will receive exciting prizes and recognition.
+</p>
+</div>
+
+<div class="section">
+<h2>Key Highlights</h2>
+<div class="highlight-box">Intense Gaming Battles</div>
+<div class="highlight-box">Compete with the Best</div>
+</div>
+
+<div class="contact">
+<h2>Contact Us</h2>
+<h4>Event Coordinator</h4>
+        <p>Name: Prof. Ram Sarnaik</p>
+        <p>📞 Contact: +91 9370754084</p>
+        <p>Name: Prof. wrutwik Kadam</p> 
+        <p>📞 Contact: +91 7066468572</p>
+
+        <h4>Student Coordinator</h4>
+       <p>Rishab Bagwa: +91 7499332294</p>
+       <p>Rudra Paturwar: +91 9826987121</p>
+</div>
+
+
+<br><br>
+<a href="events.html" class="btn">⬅ Back</a>
+
+</div>
+
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle{
+    constructor(x,y,dirX,dirY,size,color){
+        this.x=x;
+        this.y=y;
+        this.dirX=dirX;
+        this.dirY=dirY;
+        this.size=size;
+        this.color=color;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2,false);
+        ctx.fillStyle=this.color;
+        ctx.fill();
+    }
+    update(){
+        if(this.x>canvas.width||this.x<0) this.dirX=-this.dirX;
+        if(this.y>canvas.height||this.y<0) this.dirY=-this.dirY;
+        this.x+=this.dirX;
+        this.y+=this.dirY;
+        this.draw();
+    }
+}
+
+function init(){
+    particlesArray=[];
+    for(let i=0;i<120;i++){
+        let size=Math.random()*2;
+        let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height;
+        let dirX=(Math.random()*0.4)-0.2;
+        let dirY=(Math.random()*0.4)-0.2;
+        particlesArray.push(new Particle(x,y,dirX,dirY,size,"#00c3ff"));
+    }
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<particlesArray.length;i++){
+        particlesArray[i].update();
+    }
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>

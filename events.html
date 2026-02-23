@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech-Fusion 2k26</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    transition:0.4s;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background: linear-gradient(90deg, #6a5af9, #ff4fa3);
+    color:white;
+}
+/*Countdown*/
+/* Countdown Section */
+.countdown-section{
+    text-align:center;
+    padding:60px 20px;
+    color:#a855f7;
+}
+
+.countdown-section h2{
+    font-size:32px;
+    margin-bottom:30px;
+}
+
+/* Countdown Container */
+.countdown{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;   /* Important for responsiveness */
+}
+
+/* Time Box */
+.time-box{
+    min-width:120px;
+    padding:25px 20px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(8px);
+    border:1px solid #a855f7;
+    box-shadow:0 0 20px rgba(168,85,247,0.6);
+    transition:0.3s ease;
+}
+
+.time-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(168,85,247,0.9);
+}
+
+.time-box span{
+    font-size:40px;
+    font-weight:bold;
+    color:#ffffff;
+}
+
+.time-box p{
+    margin-top:8px;
+    font-size:14px;
+    color:#d1c4e9;
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+    .countdown-section h2{
+        font-size:24px;
+    }
+
+    .time-box{
+        min-width:100px;
+        padding:20px 15px;
+    }
+
+    .time-box span{
+        font-size:30px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width:480px){
+
+    .countdown{
+        gap:15px;
+    }
+
+    .time-box{
+        width:45%;   /* 2 per row */
+    }
+
+    .time-box span{
+        font-size:26px;
+    }
+}
+
+/* TITLE */
+.section-title{
+    text-align:center;
+    margin:40px 0 20px;
+    font-size:28px;
+}
+
+/* CARD CONTAINER */
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding-bottom:40px;
+}
+
+/* CARD */
+.card{
+    width:400px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+    box-shadow:0 15px 25px rgba(0,0,0,0.2);
+}
+
+.card h3{
+    background: linear-gradient(90deg, #a855f7, #7e22ce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card p{
+    font-size:14px;
+    color:#555;
+    margin-bottom:15px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.register{
+    background:#6a5af9;
+    color:white;
+}
+
+.register:hover{
+    background:#4b3ef0;
+}
+
+.btn:hover{
+    opacity:0.8;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:0.4s;
+}
+
+.modal.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-content{
+    background:white;
+    width:500px;
+    padding:25px;
+    border-radius:12px;
+    transform:scale(0.7);
+    transition:0.4s;
+    position:relative;
+    animation:slideUp 0.4s ease;
+    color:black;
+}
+
+@keyframes slideUp{
+    from{transform:translateY(40px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+.close-btn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+footer{
+    margin-top: 50px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Top Section */
+.footer-top{
+    background: #e6e6e6;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+/* Main Heading */
+.footer-top > p{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Coordinator Section */
+.coordinator{
+    max-width: 600px;
+    margin: auto;
+}
+
+.coordinator h4{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 2px solid #6a5af9;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.coordinator p{
+    margin: 5px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+/* Bottom Black Strip */
+.footer-bottom{
+    height: 30px;
+    background: #000;
+}
+
+/* Hover Effect */
+.coordinator p:hover{
+    color: #6a5af9;
+    transition: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 600px){
+    .footer-top{
+        padding: 25px 15px;
+    }
+
+    .coordinator h4{
+        font-size: 16px;
+    }
+
+    .coordinator p{
+        font-size: 14px;
+    }
+}
+
+@media(max-width:500px){
+    .card, .modal-content{
+        width:90%;
+    }
+}
+
+body{
+    margin:0;
+    background:black;
+    color:#00ff99;
+    font-family: monospace;
+    overflow-x:hidden;   /* ✅ Only horizontal block karega */
+}
+
+#matrix{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+#bootScreen{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+#terminal{
+    font-size:18px;
+    white-space:pre-line;
+}
+
+.main-title{
+    text-align:center;
+    margin-top:100px;
+    font-size:40px;
+}
+.social-section{
+    text-align:center;
+    padding:30px 0;
+    background:#0f172a;
+    margin-top:40px;
+}
+
+.social-section h3{
+    color:#00c3ff;
+    margin-bottom:15px;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.social{
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.insta{
+    background:#E1306C;
+}
+
+.fb{
+    background:#1877F2;
+}
+
+.web{
+    background:#00c3ff;
+    color:black;
+}
+
+.social:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>🔥 TECH-FUSION 2k26</h2>
+</div>
+
+<section class="countdown-section">
+    <h2>🚀 Tech Fusion 2K26 Starts In</h2>
+
+    <div class="countdown">
+        <div class="time-box">
+            <span id="days">09</span>
+            <p>Days</p>
+        </div>
+
+        <div class="time-box">
+            <span id="hours">24</span>
+            <p>Hours</p>
+        </div>
+
+        <div class="time-box">
+            <span id="minutes">60</span>
+            <p>Minutes</p>
+        </div>
+
+        <div class="time-box">
+            <span id="seconds">60</span>
+            <p>Seconds</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-title">
+    College Event Sections
+</div>
+
+<div class="container">
+
+    <div class="card">
+    <h3>📄 Paper Presentation</h3>
+    <p>Present your innovative ideas and research confidently.</p>
+    <div class="buttons">
+        <a href="paperpresentation.html" class="btn view">View</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGVm9hHHrPaZx82FzjQB3pq3L46T3sJ6W0YkA8NvR3VTYIBA/viewform?usp=header"
+           target="_blank"
+           class="btn register">Register</a>
+    </div>
+</div>
+
+    <div class="card">
+        <h3>🎨 Web-Crafting (UI/UX)</h3>
+        <p>Turn ideas into interactive and visually engaging web designs.</p>
+        <div class="buttons">
+            <a href="web-crafting.html" class="btn view">View</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8bpH1ee6onNqYgWzng0zOqBRS6-K6r6u4_clUg3hLRMPuCA/viewform?usp=preview"
+               target="_blank"
+               class="btn register">Register</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <h3>📐 Auto-CAD Designing</h3>
+        <p>Create precise and innovative designs using advanced modeling tools.</p>
+        <div class="buttons">
+            <a href="auto-cad.html" class="btn view">View</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCRvaIDegaQPB8exNjFaligfqiKHDsbw_wDTZsFcnpjQJSzA/viewform?usp=publish-editor"
+               target="_blank"
+               class="btn register">Register</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>🎮 E-Sport</h3>
+        <p>Enter the arena, showcase skills and claim victory.</p>
+        <div class="buttons">
+            <a href="e-sport.html" class="btn view">View</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScRNfPo0lI2MS6nmBDW-mEeSlq4EezwTcqtKjvwloAt1dARlA/viewform?usp=header"
+               target="_blank"
+               class="btn register">Register</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">✖</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <br>
+        <h4>Rules:</h4>
+        <ul id="modalRules"></ul>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-top">
+        <p>© 2k26 Tech-Fusion Committee</p>
+
+        <div class="coordinator">
+            <h4>Event Coordinator</h4>
+            <p>Name: Prof. Ajinkya Gujarkar</p>
+            <p>📞 Contact: +91 8169049683</p>
+            <p>Name: Prof. Swaroop Bhoyar</p>
+            <p>📞 Contact: +91 9284858958</p>
+             <p>Name: Prof. Neha Jiwane</p>
+            <p>📞 Contact: +91 7558320286</p>
+             <h4>Student Coordinator</h4>
+            <p>Name: Himanshu Sakhare</p>
+            <p>📞 Contact: +91 7620467699</p>
+            <p>Name: Omkar Pandhare</p>
+            <p>📞 Contact: +91 9405686525</p>
+            TECH-FUSION 2k26 <br>
+            Computer Science and Engineering Department <br>
+            Tulsiramji Gaikwad-Patil College of Engineering & Technology, Nagpur
+            <div class="social-section">
+
+    <h3>Connect With Us</h3>
+
+    <div class="social-links">
+
+        <a href="https://www.instagram.com/tgpcet_community?igsh=cmozM3EzNGU1NDRt" target="_blank" class="social insta">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+
+        <a href="https://facebook.com/your_fb_id" target="_blank" class="social fb">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+
+        <a href="https://www.tgpcet.com/" target="_blank" class="social web">
+            <i class="fas fa-globe"></i> College Website
+        </a>
+
+    </div>
+
+</div>
+        </div>
+    </div>
+
+    <div class="footer-bottom"></div>
+</footer>
+
+<script>
+
+const modal = document.getElementById("modal");
+const title = document.getElementById("modalTitle");
+const desc = document.getElementById("modalDesc");
+const rules = document.getElementById("modalRules");
+
+
+function closeModal(){
+    modal.classList.remove("active");
+}
+
+/* Close when clicking outside */
+window.onclick = function(e){
+    if(e.target === modal){
+        closeModal();
+    }
+}
+
+</script>
+
+<canvas id="matrix"></canvas>
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "アァイィウヴエカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァイィウヴエカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+    drops[x] = 1;
+}
+
+function draw(){
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff99";
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++){
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+<script>
+const eventDate = new Date("March 15, 2026 09:00:00").getTime();
+
+const countdown = setInterval(function(){
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    if(distance < 0){
+        clearInterval(countdown);
+        document.querySelector(".countdown").innerHTML = "🎉 Event Started!";
+    }
+
+}, 1000);
+</script>
+
+</body>
+</html>

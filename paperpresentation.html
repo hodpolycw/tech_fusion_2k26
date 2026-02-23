@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Presentation - Tech Fusion 2K26</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* PARTICLE CANVAS */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* MAIN CONTAINER */
+.container{
+    padding:60px 20px;
+    max-width:800px;
+    margin:auto;
+}
+
+h1{
+    color:#00c3ff;
+    margin-bottom:20px;
+}
+
+.event-img{
+    width:250px;
+    margin:20px auto;
+    border-radius:10px;
+}
+
+.details{
+    margin-top:20px;
+    line-height:1.8;
+}
+
+.highlight{
+    margin-top:40px;
+}
+
+.highlight-box{
+    display:inline-block;
+    margin:10px;
+    padding:15px 25px;
+    background:#1e293b;
+    border-radius:8px;
+    border:1px solid #00c3ff;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 30px;
+    background:#00c3ff;
+    color:black;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px #00c3ff;
+}
+
+.section{
+    margin-top:40px;
+}
+
+ul{
+    text-align:left;
+    display:inline-block;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+
+<h1>📄 Paper Presentation</h1>
+
+<img src="https://via.placeholder.com/250x150" class="event-img">
+
+<div class="details">
+<p>A National Level platform to showcase your innovative research ideas and technical knowledge.</p>
+
+<p><strong>📅 Date:</strong> 07 March 2026</p>
+<p><strong>⏰ Time:</strong> 11:00 AM – 02:00 PM</p>
+<p><strong>📍 Venue:</strong> TGPCET Campus, Nagpur</p>
+<p><strong>💰 Group Entry Fees:</strong> ₹200 (Max 3–4 Members)</p>
+<p><strong>💰 Solo Entry Fees:</strong> ₹50</p>
+</div>
+
+<div class="section">
+
+<h2>📄 Paper Presentation Guidelines</h2>
+
+<p><strong>📌 Format:</strong> Paper must be written in IEEE format.</p>
+<p><strong>📊 Plagiarism:</strong> Less than 10% plagiarism is allowed.</p>
+<p><strong>💰 Note:</strong> Camera-ready paper submission (Charges Applicable).</p>
+
+</div>
+
+<div class="section">
+<h2>🧑‍🎓 Basic Science & Humanities Topic </h2>
+<ul>
+<li>3D Printing Basic Models</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>🖥 Information Technology Topic</h2>
+<ul>
+<li>AI-Based Smart Attendance System using Face Recognition</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>💻 Computer Science & Engineering Topic</h2>
+<ul>
+<li>AI-Driven Zero Trust Security Architecture for Modern Enterprises</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>⚙ Mechanical Engineering Topic</h2>
+<ul>
+<li>Systems Engineering Approach to Future Mechanical Product Design</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>⚡ Electrical Engineering Topic</h2>
+<ul>
+<li>Innovative Final Year Project Ideas in Electrical Engineering</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>📡 Electronics & Communication Engineering Topic</h2>
+<ul>
+<li>Department-Oriented Project Topics</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>🏗 Civil Engineering Topic</h2>
+<ul>
+<li>Smart Technologies in Civil and environmental Engineering for Sustainability</li>
+</ul>
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfGVm9hHHrPaZx82FzjQB3pq3L46T3sJ6W0YkA8NvR3VTYIBA/viewform?usp=header" target="_blank" class="btn">Register Now</a>
+
+<div class="highlight">
+<h2>Key Highlights</h2>
+
+<div class="highlight-box">Innovation & Creativity</div>
+<div class="highlight-box">Expert Judging Panel</div>
+<div class="highlight-box">Certificate for All</div>
+</div>
+
+</div>
+
+<div class="contact">
+<h2>Contact Us</h2>
+<h4>Event Coordinator</h4>
+        <p>Name: Prof. Ruchi Sakhare</p>
+        <p>📞 Contact: +91 7020736811</p>
+        <p>Name: Prof. Trupti Hande</p>
+        <p>📞 Contact: +91 7276716472</p>
+
+        <h4>Student Coordinator</h4>
+        <p>Gungun Prajapati: +91 9422840242</p>
+        <p>Samruddhi Meshram: +91 7756096835</p>
+
+        <br><br>
+<a href="events.html" class="btn">⬅ Back</a>
+</div>
+
+<script>
+/* PARTICLE BACKGROUND */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle{
+    constructor(x,y,dirX,dirY,size,color){
+        this.x=x;
+        this.y=y;
+        this.dirX=dirX;
+        this.dirY=dirY;
+        this.size=size;
+        this.color=color;
+    }
+
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2,false);
+        ctx.fillStyle=this.color;
+        ctx.fill();
+    }
+
+    update(){
+        if(this.x>canvas.width||this.x<0) this.dirX=-this.dirX;
+        if(this.y>canvas.height||this.y<0) this.dirY=-this.dirY;
+        this.x+=this.dirX;
+        this.y+=this.dirY;
+        this.draw();
+    }
+}
+
+function init(){
+    particlesArray=[];
+    for(let i=0;i<100;i++){
+        let size=Math.random()*3;
+        let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height;
+        let dirX=(Math.random()*0.4)-0.2;
+        let dirY=(Math.random()*0.4)-0.2;
+        particlesArray.push(new Particle(x,y,dirX,dirY,size,"#00c3ff"));
+    }
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<particlesArray.length;i++){
+        particlesArray[i].update();
+    }
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>
